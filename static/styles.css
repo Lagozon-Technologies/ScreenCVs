@@ -113,7 +113,90 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #5a5fc8;
+    background-color: #F1AB45;
+}
+input[type="submit"]:focus {
+    background-color: #F1AB45;
+}
+h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: #3e4095; /* Adjust the color to match your site's theme */
+}
+.flash-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.error {
+    background-color: #FFD2D2;
+    color: #FF0000;
+}
+
+.success {
+    background-color: #D2FFD2;
+    color: #008000;
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    display: none;
+    z-index: 999; /* Ensure the overlay appears on top of other elements */
+}
+#processing-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    text-align: center;
+}
+
+#spinner {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    /* Center the spinner */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px var(--green);
+    }
 }
 
 /* Responsive adjustments for smaller screens */
