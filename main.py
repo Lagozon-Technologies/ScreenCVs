@@ -10,17 +10,14 @@ from spacy.matcher import Matcher #comparing patterns found with grammatical con
 app = Flask(__name__)
 
 # Set the secret key
-app.config['SECRET_KEY'] = ''  # Replace 'your_secret_key_here' with your actual secret key
+app.config['SECRET_KEY'] = 'rove2001'  # Replace 'your_secret_key_here' with your actual secret key
 
 # Load SpaCy model globally to avoid reloading it on each request
 nlp = spacy.load('en_core_web_sm')
-AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=https;AccountName=storeunstructured;AccountKey=R6tMT72a5zmHdUUR4SppbaVWXH/zw+NYk+PrXEZd3shInh94/bppOcOLklASoGojFM4sj7KPJQFU+AStwwikKQ==;EndpointSuffix=core.windows.net"
-#string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
-connectionString =AZURE_STORAGE_CONNECTION_STRING
-#BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 
-#AZURE_STORAGE_CONNECTION_STRING = ''
-AZURE_CONTAINER_NAME = 'storagecv'
+
+AZURE_STORAGE_CONNECTION_STRING = 'AccountName=lzblobgenaipoc;AccountKey=Dr8dZzKKzLGAhGtexd2NkGl0YMJjl6T4uS6TP+xFWKeoH9IA73nXhmk28hUVrFRAwcRjZ2Gz0CV4+AStoIo6bg==;EndpointSuffix=core.windows.net;DefaultEndpointsProtocol=https;'
+AZURE_CONTAINER_NAME = 'rohit'
 
 @app.route('/')
 def form():
@@ -155,5 +152,4 @@ def search_skills_in_resume(text, skills):
     return found_skills if found_skills else None
 
 if __name__ == '__main__':
-    #app.run(debug=True)
-    app.run(host="0.0.0.0", port=8000)
+    app.run(debug=True)
