@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="icon" type="image/x-icon" href="static\favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="static\styles.css">
 </head>
+
 <body>
     <nav>
         <div class="nav-wrapper">
             <img src="static\lagozon.png" alt="Lagozon Logo" style="height: 60px; margin-left: 10px;">
             <!-- Navbar Links -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="https://www.lagozon.com/about-lagozon/" >Home</a></li>
+                <li><a href="https://www.lagozon.com/about-lagozon/">Home</a></li>
                 <li><a href="/submit">HRTrove.AI</a></li>
                 <!-- Add other navbar items here -->
             </ul>
@@ -27,71 +29,142 @@
     <div class="container">
         <div class="header">
             <img src="static\lagozon.png" alt="Company Logo">
-            <h1>HRTrove.AI</h1>
+            <h1>HireSight.AI</h1>
             <p class="tagline">Navigating AI for Smarter Hiring</p>
         </div>
-        <form action="/submit" method="post">
+        <!-- Flash Messages Section -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div id="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <form id="resume-form" action="/submit" method="post" enctype="multipart/form-data">
             <fieldset>
-                <legend>Enter the skills you are looking for in resumes:</legend>
+                <legend>Select the skills you are looking for in resumes:</legend>
+
                 <!-- Power BI Services Group -->
+                <h3>Data Analyst</h3>
                 <div>
                     <input type="checkbox" id="power_bi_services" name="skills" value="Power BI Services">
-                    <label for="power_bi_services">Power BI Services</label>
-                    <input type="checkbox" id="power_bi_desktop" name="skills" value="Power BI Desktop">
-                    <label for="power_bi_desktop">Power BI Desktop</label>
-                    <input type="checkbox" id="power_query" name="skills" value="Power Query">
-                    <label for="power_query">Power Query</label>
-                    <input type="checkbox" id="dax" name="skills" value="DAX">
-                    <label for="dax">DAX</label>
+                    <label for="power_bi_services">Power BI</label>
+                    <input type="checkbox" id="qlik" name="skills" value="Qlik">
+                    <label for="qlik">Qlik</label>
+                    <input type="checkbox" id="tableau" name="skills" value="Tableau">
+                    <label for="tableau">Tableau</label>
+                    <input type="checkbox" id="SQL" name="skills" value="SQL">
+                    <label for="SQL">SQL</label>
                 </div>
+
                 <!-- Qlik Sense Group -->
+                <h3>Data Engineer</h3>
                 <div>
-                    <input type="checkbox" id="qlik_sense" name="skills" value="Qlik Sense">
-                    <label for="qlik_sense">Qlik Sense</label>
-                    <input type="checkbox" id="nprinting" name="skills" value="Nprinting">
-                    <label for="nprinting">Nprinting</label>
-                    <input type="checkbox" id="set_analysis" name="skills" value="Set Analysis">
-                    <label for="set_analysis">Set Analysis</label>
-                    <input type="checkbox" id="qmc" name="skills" value="QMC">
-                    <label for="qmc">QMC</label>
-                    <input type="checkbox" id="qlik_mashup" name="skills" value="Qlik Mashup">
-                    <label for="qlik_mashup">Qlik Mashup</label>
+                    <input type="checkbox" id="snowflake" name="skills" value="Snowflake">
+                    <label for="snowflake">Snowflake</label>
+                    <input type="checkbox" id="db" name="skills" value="Databricks">
+                    <label for="db">Databricks</label>
+                    <input type="checkbox" id="pyspark" name="skills" value="PySpark">
+                    <label for="pyspark">PySpark</label>
+                    <input type="checkbox" id="kafka" name="skills" value="kafka">
+                    <label for="kafka">KAFKA</label>
+                    <input type="checkbox" id="python" name="skills" value="Python">
+                    <label for="python">Python</label>
                 </div>
+
                 <!-- SQL Group -->
+                <h3>Cloud Technologies</h3>
                 <div>
-                    <input type="checkbox" id="sql" name="skills" value="SQL">
-                    <label for="sql">SQL</label>
-                    <input type="checkbox" id="ms_sql" name="skills" value="MS SQL">
-                    <label for="ms_sql">MS SQL</label>
-                    <input type="checkbox" id="my_sql" name="skills" value="MY SQL">
-                    <label for="my_sql">MY SQL</label>
+                    <input type="checkbox" id="Azure" name="skills" value="Azure">
+                    <label for="Azure">Azure</label>
+                    <input type="checkbox" id="aws" name="skills" value="AWS">
+                    <label for="aws">AWS</label>
+                    <input type="checkbox" id="gcp" name="skills" value="GCP">
+                    <label for="gcp">GCP</label>
+
                 </div>
-                <!-- Additional Skills (Examples for others) -->
+
+
+
+                <!-- Additional Skills -->
+                <h3>Other Skills</h3>
                 <div>
-                    <input type="checkbox" id="aws_databricks" name="skills" value="AWS Databricks">
-                    <label for="aws_databricks">AWS Databricks</label>
-                    <input type="checkbox" id="aws_data_lake" name="skills" value="AWS Data Lake">
-                    <label for="aws_data_lake">AWS Data Lake</label>
-                    <!-- Add more checkboxes for other groups similar to above -->
-                </div>
-                <div>
-                    <input type="checkbox" id="devops" name="skills" value="Devops">
-                    <label for="devops">Devops</label>
-                </div>
-                <div>
+
                     <input type="checkbox" id="digital_marketing" name="skills" value="Digital Marketing">
                     <label for="digital_marketing">Digital Marketing</label>
                     <input type="checkbox" id="content_writer" name="skills" value="Content Writer">
                     <label for="content_writer">Content Writer</label>
-                    <input type="checkbox" id="blog_writer" name="skills" value="Blog Writer">
-                    <label for="blog_writer">Blog Writer</label>
-                    <input type="checkbox" id="email_marketing" name="skills" value="Email Marketing">
-                    <label for="email_marketing">Email Marketing</label>
+
+                    <input type="checkbox" id="talent-aq" name="skills" value="Talent Acquisition">
+                    <label for="talent-aq">Talent Acquisition</label>
                 </div>
             </fieldset>
+            <fieldset>
+                <legend>Additional Skills:</legend>
+                <label for="additional_skills">Enter any other skills not listed above:</label>
+                <input type="text" id="additional_skills" name="additional_skills" placeholder="e.g., Java, C#, Ruby" />
+            </fieldset>
+
             <input type="submit" value="Submit">
         </form>
-                
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <!-- Existing form fields -->
+
+            <!-- New field for uploading resumes folder -->
+            <fieldset>
+                <legend>Upload Resumes Folder to Azure Blob:</legend>
+                <label for="resume-folder">Select folder containing resume files:</label>
+                <input type="file" id="resume-folder" name="resume-folder" webkitdirectory directory multiple>
+                <input type="submit" value="Upload">
+            </fieldset>
+
+        </form>
     </div>
+    <div id="overlay"></div>
+    <div id="processing-container" style="display: none;">
+        <div id="spinner"><!-- Spinner here --></div>
+        <p id="scanning-message" style="display: none; ">Scanning documents...</p> <!-- Initially hidden -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('resume-form');
+            const processingContainer = document.getElementById('processing-container');
+            const spinner = document.getElementById('spinner');
+            const scanningMessage = document.getElementById('scanning-message');
+            const overlay = document.getElementById('overlay')
+            form.addEventListener('submit', function (event) {
+                processingContainer.style.display = 'block';
+                spinner.style.display = 'block';
+                scanningMessage.style.display = 'block';
+                overlay.style.display = 'block'; // Display the overlay
+                fetch('/submit', {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error, status = ${response.status}`);
+                        }
+                        return response.blob();
+                    })
+                    .then(blob => {
+                        spinner.style.display = 'none';
+                        scanningMessage.style.display = 'none';
+                        overlay.style.display = 'none'; // Display the overlay
+                        // Handle blob here if necessary
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                        spinner.style.display = 'none';
+                        scanningMessage.style.display = 'none';
+                        alert('Error processing your request. Please try again.');
+                    });
+            });
+        });
+    </script>
 </body>
+
 </html>
