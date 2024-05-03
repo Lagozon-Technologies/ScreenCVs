@@ -152,4 +152,5 @@ def search_skills_in_resume(text, skills):
     return found_skills if found_skills else None
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(host="0.0.0.0", port=8000)
