@@ -13,6 +13,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Set the secret key
+
 app.config['SECRET_KEY'] = 'rove2001'  
 nlp = spacy.load('en_core_web_sm') #loading all the english words in variable nlp
 
@@ -20,6 +21,16 @@ nlp = spacy.load('en_core_web_sm') #loading all the english words in variable nl
 AZURE_STORAGE_CONNECTION_STRING = os.environ.get('AZURE_STORAGE_CONNECTION_STRING')
 AZURE_CONTAINER_NAME = os.environ.get('AZURE_CONTAINER_NAME')  #put this in .env file
 blob_service_client = get_blob_service_client(AZURE_STORAGE_CONNECTION_STRING)
+=======
+app.config['SECRET_KEY'] = 'rove2001'  # Replace 'your_secret_key_here' with your actual secret key
+
+# Load SpaCy model globally to avoid reloading it on each request
+nlp = spacy.load('en_core_web_sm')
+
+
+# AZURE_STORAGE_CONNECTION_STRING = 'AccountName=lzblobgenaipoc;AccountKey=Dr8dZzKKzLGAhGtexd2NkGl0YMJjl6T4uS6TP+xFWKeoH9IA73nXhmk28hUVrFRAwcRjZ2Gz0CV4+AStoIo6bg==;EndpointSuffix=core.windows.net;DefaultEndpointsProtocol=https;'
+# AZURE_CONTAINER_NAME = 'rohit'
+
 
 @app.route('/')  #homepage of the webapp 
 #rendering the form.html for frontend start
@@ -174,4 +185,7 @@ def search_skills_in_resume(text, skills):
     return found_skills if found_skills else None
 
 if __name__ == '__main__':
-    app.run(debug=True)
+
+    # app.run(debug=True)
+    app.run(host="0.0.0.0", port=8000)
+
