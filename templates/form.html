@@ -106,6 +106,15 @@
                 <label for="additional_skills">Enter any other skills not listed above:</label>
                 <input type="text" id="additional_skills" name="additional_skills" placeholder="e.g., Java, C#, Ruby" />
             </fieldset>
+            <fieldset>
+                <legend>Select a folder for assessing CVS files:</legend>
+                <label for="folder-select">Select folder:</label>
+                <select id="folder-select" name="folder-select">
+                    {% for folder in folders %}
+                    <option value="{{ folder }}">{{ folder }}</option>
+                    {% endfor %}
+                </select>
+            </fieldset>
 
             <input type="submit" value="Submit">
         </form>
