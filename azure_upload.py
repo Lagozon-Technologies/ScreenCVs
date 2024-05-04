@@ -28,4 +28,9 @@ def upload_folder_to_blob(blob_service_client: BlobServiceClient, container_name
         print(f"Uploading {file_name} to blob storage...")
         blob_client.upload_blob(file_contents, overwrite=True)
 
-                
+def get_blob_folders(blob_service_client, container_name):
+    folders = []
+    container_client = blob_service_client.get_container_client(container_name)
+    for file in container_client.walk_blobs():
+        folders.append(file.name)
+    return folders
