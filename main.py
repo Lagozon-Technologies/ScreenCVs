@@ -21,7 +21,7 @@ nlp = spacy.load('en_core_web_sm') #loading all the english words in variable nl
 AZURE_STORAGE_CONNECTION_STRING = os.environ.get('AZURE_STORAGE_CONNECTION_STRING')
 AZURE_CONTAINER_NAME = os.environ.get('AZURE_CONTAINER_NAME')  #put this in .env file
 blob_service_client = get_blob_service_client(AZURE_STORAGE_CONNECTION_STRING)
-=======
+
 app.config['SECRET_KEY'] = 'rove2001'  # Replace 'your_secret_key_here' with your actual secret key
 
 # Load SpaCy model globally to avoid reloading it on each request
