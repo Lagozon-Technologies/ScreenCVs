@@ -8,8 +8,8 @@ from azure_upload import get_blob_folders, get_blob_service_client, upload_folde
 from pdfminer.high_level import extract_text #extracting text chunks from pdf files
 import spacy  #for nlp (extracting names and skills)
 from spacy.matcher import Matcher #comparing patterns found with grammatical context
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 app = Flask(__name__)
 
 # Set the secret key
